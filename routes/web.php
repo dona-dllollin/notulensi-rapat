@@ -40,7 +40,9 @@ Route::middleware(['auth'])->group(function(){
 
 
     // rapat
-    Route::get('/tambahrapat', [RapatController::class, 'tambah'])->name('rapat');
+    Route::get('/rapat', [RapatController::class, 'index'])->name('rapat');
+    Route::get('/tambahrapat', [RapatController::class, 'tambah']);
+    Route::get('/detail/rapat/{id}', [RapatController::class, 'detail']);
 
 
     // jenis rapat
@@ -50,6 +52,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/edit/type/{id}', [TypeController::class, 'edit']);
     Route::post('/edit/type', [TypeController::class, 'change']);
     Route::post('/hapus/type/{id}', [TypeController::class, 'delete']);
+    // Route::get('/export', [TypeController::class, 'export'])->name('export');
 
     
     // user control

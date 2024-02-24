@@ -68,7 +68,7 @@
                     </div>
                     <div  style="padding: 20px; padding-top: 40px">
                     <a href="/editprofile/{{$item->id}}" class="btn btn-primary">Edit</a>
-                    <a href="/usercontrol" class="btn bg-gray-500 text-gray-100">Kembali</a>
+                    <a href="/notulen" class="btn bg-gray-500 text-gray-100">Kembali</a>
                 </div>
                     </div>
                 </div>

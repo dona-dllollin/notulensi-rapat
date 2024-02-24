@@ -182,7 +182,7 @@
                     
                     </div>
                     <button type="submit" class="btn btn-primary me-2">Tambah</button>
-                    <a href="/notulen" class="btn bg-gray-500 text-gray-100">Kembali</a>
+                    <a href="/rapat" class="btn bg-gray-500 text-gray-100">Kembali</a>
                 </form>
             </div>
         </div>

@@ -27,8 +27,8 @@
           <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
               <div class="bg-white py-2 collapse-inner rounded">
                   <h6 class="collapse-header">Notulensi Rapat:</h6>
-                  <a class="collapse-item" href="cards.html">Tabel Data Rapat</a>
-                  <a class="collapse-item" href="{{route('rapat')}}">Tambah Rapat</a>
+                  <a class="collapse-item" href="{{route('rapat')}}">Tabel Data Rapat</a>
+                  <a class="collapse-item" href="/tambahrapat">Tambah Rapat</a>
               </div>
           </div>
       </li>
@@ -45,7 +45,6 @@
               <div class="bg-white py-2 collapse-inner rounded">
                   <h6 class="collapse-header">Jenis - Jenis Rapat:</h6>
                   <a class="collapse-item" href="{{route('type')}}">Tabel Jenis Rapat</a>
-                  <a class="collapse-item" href="utilities-color.html">Tambah Jenis Rapat</a>
               </div>
           </div>
       </li>
