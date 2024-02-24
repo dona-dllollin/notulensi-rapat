@@ -67,7 +67,7 @@
     </div>
 
     <div style="margin: 50px; overflow:auto; height:15cm" data-spy="scroll" data-offset="0" >
-        <p>{{$item->notulen}}</p>
+        <p>{!! $item->notulen !!}</p>
     </div>
         
         @endforeach

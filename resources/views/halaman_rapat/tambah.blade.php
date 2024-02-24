@@ -114,7 +114,7 @@
     <div class="col-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title mb-4">Tambah data DAMA</h4>
+                <h4 class="card-title mb-4">Tambah data Rapat</h4>
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -128,57 +128,54 @@
                     @csrf
                     <div class="form-group">
                         <label for="nama">Nomor Rapat</label>
-                        <input type="text" class="form-control" id="nomor" placeholder="11/5Va/01"
-                            name="nomor" required>
+                        <input type="text" class="form-control" id="nomor" placeholder="Nomor Rapat"
+                            name="nomor">
                     </div>
                     <div class="form-group">
-                        <label for="prodi_id">Jenis Rapat</label>
-                        <select class="form-control" name="jenis" id="jenis" style="width: 100%">
-                            <option >-----</option>
-                        
-                            <option value="">Dona</option>
-                            <option value="">dlollin</option>
-                            <option value="">kevin</option>
-                           
+                        <label for="jenis">Jenis Rapat</label>
+                        <select class="form-control" name="jenis" id="jenis" style="width: 100%" required>
+                            <option >Pilih Jenis Rapat</option>
+                            @foreach ($type as $item)
+                            <option value="{{$item->id}}">{{$item->name}}</option>     
+                            @endforeach
                         </select>
                       </div>
                     <div class="form-group">
                         <label for="nama">Nama Rapat</label>
-                        <input type="text" class="form-control" id="name" placeholder="Kevin Example"
+                        <input type="text" class="form-control" id="name" placeholder="Nama Rapat"
                             name="name" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Pemimpin Rapat</label>
-                        <input type="text" class="form-control" id="pemimpin" placeholder="Nurdin"
-                            name="pemimpin" required >
+                        <input type="text" class="form-control" id="pemimpin" placeholder="Pemimpin Rapat"
+                            name="pemimpin" >
                     </div>
                     <div class="form-group">
+                        <input type="hidden" name="user_id" id="user_id" value="{{Auth::user()->id}}">
                         <label for="email">Notulen Rapat</label>
-                        <input type="text" class="form-control" id="notulen" placeholder="Nurdin"
-                            name="notulen" disabled >
+                        <input type="text" class="form-control" id="notulen"  value="{{Auth::user()->name}}"
+                            name="notulen" disabled> 
                     </div>
                     
                     <div class="form-group row">
                         <div class="col-sm-6 mb-3 mb-sm-0">
                         <label for="nim">tanggal</label>
-                        <input type="date" class="form-control" id="tanggal" placeholder="22020000" name="tanggal"
-                            required>
+                        <input type="date" class="form-control" id="tanggal"  name="tanggal">
                         </div>
                     
                     <div class="col-sm-6">
                         <label for="angkatan">Waktu</label>
-                        <input type="time" class="form-control" id="waktu" placeholder="21" name="waktu"
-                            required>
+                        <input type="time" class="form-control" id="waktu" name="waktu"
+                          >
                     </div>
                     </div>
 
                     <div class="form-group">
                         <label for="jurusan">Notulensi Rapat</label>
-                        <div id="editor">
-                        <textarea  class="form-control" id="notulensi" 
-                            name="notulensi" >
+                        
+                        <textarea  class="form-control" name="notulensi" id="editor">
                         </textarea>
-                    </div>
+                  
                     
                     </div>
                     <button type="submit" class="btn btn-primary me-2">Tambah</button>

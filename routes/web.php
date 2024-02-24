@@ -42,6 +42,7 @@ Route::middleware(['auth'])->group(function(){
     // rapat
     Route::get('/rapat', [RapatController::class, 'index'])->name('rapat');
     Route::get('/tambahrapat', [RapatController::class, 'tambah']);
+    Route::post('/tambahrapat', [RapatController::class, 'create']);
     Route::get('/detail/rapat/{id}', [RapatController::class, 'detail']);
 
 
