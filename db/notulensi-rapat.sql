@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 26, 2024 at 04:06 PM
+-- Generation Time: Feb 26, 2024 at 04:31 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -161,7 +161,7 @@ CREATE TABLE `users` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `role` enum('admin','notulen','user') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'user',
+  `role` enum('notulen','user') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'user',
   `gambar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `verify_key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
