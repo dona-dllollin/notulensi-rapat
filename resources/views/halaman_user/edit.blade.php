@@ -1,5 +1,5 @@
 @extends('halaman_dashboard.index')
-@extends('halaman_dashboard.navnotulen')
+@extends('halaman_dashboard.navuser')
 
 
 @section('main')
@@ -16,10 +16,8 @@
                         </ul>
                     </div>
                 @endif
-                
-
                 @foreach ($user as $item)
-                    <form class="forms-sample" method="POST" action="/editprofile" enctype="multipart/form-data">
+                    <form class="forms-sample" method="POST" action="/edit/profile" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="id" value="{{ $item->id }}">
                         <div class="mb-3 text-center">
@@ -54,7 +52,7 @@
 
                         
                         <button type="submit" class="btn btn-primary me-2">Edit</button>
-                        <a href="/profile/notulen/{{$item->id}}" class="btn bg-gray-500 text-gray-100">Kembali</a>
+                        <a href="/profile/user/{{$item->id}}" class="btn bg-gray-500 text-gray-100">Kembali</a>
                     </form>
                 @endforeach
             </div>

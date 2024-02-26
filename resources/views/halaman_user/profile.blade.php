@@ -1,5 +1,5 @@
 @extends('halaman_dashboard.index')
-@extends('halaman_dashboard.navnotulen')
+@extends('halaman_dashboard.navuser')
 
 
 @section('main')
@@ -67,8 +67,8 @@
                         </table>
                     </div>
                     <div  style="padding: 20px; padding-top: 40px">
-                    <a href="/editprofile/{{$item->id}}" class="btn btn-primary">Edit</a>
-                    <a href="/notulen" class="btn bg-gray-500 text-gray-100">Kembali</a>
+                    <a href="/edit/profile/{{$item->id}}" class="btn btn-primary">Edit</a>
+                    <a href="/user" class="btn bg-gray-500 text-gray-100">Kembali</a>
                 </div>
                     </div>
                 </div>

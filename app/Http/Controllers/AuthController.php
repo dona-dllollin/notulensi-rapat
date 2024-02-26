@@ -35,9 +35,7 @@ class AuthController extends Controller
 
     if(Auth::attempt($dataLogin)){
         if(Auth::user()->email_verified_at !== null){
-            if(Auth::user()->role === 'admin'){
-                return redirect()->route('admin')->with('success', 'Selamat datang Admin');
-            } else if (Auth::user()->role === 'notulen'){
+            if (Auth::user()->role === 'notulen'){
                 return redirect()->route('notulen')->with('success', 'Anda Berhasil Login');
                 
             } else if (Auth::user()->role === 'user'){

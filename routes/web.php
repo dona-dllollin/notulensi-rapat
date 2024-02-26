@@ -5,6 +5,7 @@ use App\Http\Controllers\NotulenController;
 use App\Http\Controllers\RapatController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\UserControlController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,10 +34,17 @@ Route::middleware(['auth'])->group(function(){
     Route::redirect('/home', '/notulen');
 
         // notulen
-    Route::get('/notulen', [NotulenController::class, 'index'])->name('notulen');
+    Route::get('/notulen', [NotulenController::class, 'index'])->name('notulen')->middleware('userAkses:notulen');;
     Route::get('/profile/notulen/{id}', [NotulenController::class, 'profile']);
     Route::get('/editprofile/{id}', [NotulenController::class, 'edit']);
     Route::post('/editprofile', [NotulenController::class, 'change']);
+
+    //User
+    Route::get('/user', [UserController::class, 'index'])->name('user')->middleware('userAkses:user');
+    Route::get('/profile/user/{id}', [UserController::class, 'profile']);
+    Route::get('/edit/profile/{id}', [UserController::class, 'edit']);
+    Route::post('/edit/profile', [UserController::class, 'change']);
+
 
 
     // rapat
@@ -44,6 +52,10 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/tambahrapat', [RapatController::class, 'tambah']);
     Route::post('/tambahrapat', [RapatController::class, 'create']);
     Route::get('/detail/rapat/{id}', [RapatController::class, 'detail']);
+    Route::get('/editrapat/{id}', [RapatController::class, 'edit']);
+    Route::post('/editrapat', [RapatController::class, 'change']);
+    Route::post('/hapusrapat/{id}', [RapatController::class, 'delete']);
+    Route::get('/ekspor/rapat/{id}', [RapatController::class, 'export']);
 
 
     // jenis rapat
