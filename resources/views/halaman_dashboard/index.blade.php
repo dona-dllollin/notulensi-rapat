@@ -58,9 +58,8 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                   <img src="{{asset('image/isso.png')}}" style="width: 70%; transform: rotate(15deg)" alt="">
                 </div>
-                <div class="sidebar-brand-text mx-3">ISSO <sup>PT</sup></div>
             </a>
 
             @yield('navitem')

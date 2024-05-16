@@ -12,20 +12,30 @@ use Illuminate\Support\Facades\Session;
 class RapatController extends Controller
 {
 
-    function index(){
-        $data = Meeting::all();
+    function index(Request $request)
+    {
+        $query = Meeting::query();
+
+        if ($request->has('type_id')) {
+            $query->where('type_id', $request->input('type_id'));
+        }
+        $data = $query->get();
+
+        $type = Type::all();
         $tittle = "Halaman Tabel Rapat";
 
-        return view('halaman_rapat.index', compact(['data', 'tittle']));
+        return view('halaman_rapat.index', compact(['data', 'tittle', 'type']));
     }
 
-    function tambah(){
+    function tambah()
+    {
         $type = Type::all();
         $tittle = 'Tambah Rapat';
         return view('halaman_rapat.tambah', compact('tittle', 'type'));
     }
 
-    function create(Request $request){
+    function create(Request $request)
+    {
 
         Meeting::insert([
             'nomor' => $request->nomor,
@@ -37,32 +47,33 @@ class RapatController extends Controller
             'waktu' => $request->waktu,
             'notulen' => $request->notulensi
         ]);
-       
+
 
 
 
         Session::flash('success', 'Data berhasil ditambahkan');
 
         return redirect('/rapat')->with('success', 'Berhasil Menambahkan Data Rapat');
-
     }
 
-    function detail($id){
+    function detail($id)
+    {
         $data = Meeting::where('id', $id)->get();
         $tittle = 'detail rapat';
         return view('halaman_rapat.detail', compact(['data', 'tittle']));
     }
 
-    function edit($id){
+    function edit($id)
+    {
         $data = Meeting::find($id);
         $type = Type::all();
         $tittle = 'Halaman Edit Rapat';
 
         return view('halaman_rapat.edit', ['data' => $data, 'type' => $type, 'tittle' => $tittle]);
-
     }
 
-    function change(Request $request){
+    function change(Request $request)
+    {
         $meeting = Meeting::find($request->id);
 
 
@@ -80,19 +91,19 @@ class RapatController extends Controller
         Session::flash('success', 'Data Rapat Berhasil Di ubah');
 
         return redirect('/detail/rapat/' . $request->id);
-
     }
 
-    function delete(Request $request){
+    function delete(Request $request)
+    {
 
-        $user = Meeting::where('id', $request->id )->delete();
+        $user = Meeting::where('id', $request->id)->delete();
         Session::flash('success', 'Data Rapat Berhasil Dihapus');
         return redirect('/rapat');
-
     }
 
-     function export($id){
-       
+    function export($id)
+    {
+
         ini_set('max_execution_time', 3600);
         $rapat = Meeting::find($id);
         $jenis = $rapat->type->name;
@@ -104,11 +115,11 @@ class RapatController extends Controller
             'jenis' => $jenis,
             'notulen' => $notulen,
             'tittle' => 'halaman ekspor rapat'
-      
+
         ];
 
         // return view('halaman_rapat.export', ['rapat' => $rapat, 'jenis' => $jenis, 'notulen' => $notulen, 'tittle' => $tittle ]);
-         
+
         $pdf = Pdf::loadView('halaman_rapat.export', $data)->setOptions(['defaultFont' => 'Times New Roman, Times, serif']);
         return $pdf->download($rapat->name . '.pdf');
     }

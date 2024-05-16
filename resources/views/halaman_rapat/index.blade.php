@@ -190,7 +190,7 @@
             <div style="float: right">
                 <a href="/tambahrapat" class="text-decoration-none text-white mr-5" ><button type="button"
                     class="btn btn-primary btn-icon-text btn-rounded d-inline" >
-                    <i class="ti-plus btn-icon-prepend"></i>Tambah  Rapat
+                    <i class="bi bi-plus"></i>  Tambah  Rapat
                 </button></a>
             </div>
             @endif
@@ -218,6 +218,17 @@
     </div>         
         <div class="table-responsive">
         <div class="card-body">
+            <div class="form-group">
+                <form action="">
+                <label for="type">Filter Jenis Rapat</label>
+                <select class="form-control" name="type_id" id="type" style="width: 30%; margin: center;" required onchange="filterMeetings()">
+                    <option value="all" {{request('type_id') == 'all' ? 'selected' : ''}}> Semua Jenis Rapat</option>
+                    @foreach ($type as $item)
+                    <option value="{{$item->id}}" {{request('type_id') == $item->id ? 'selected' : ''}}>{{$item->name}}</option>     
+                    @endforeach
+                </select>
+            </form>
+              </div>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
@@ -298,4 +309,18 @@
             }
         });
     }
+</script>
+
+<script>
+     function filterMeetings() {
+            const typeSelect = document.getElementById('type');
+            const typeId = typeSelect.value;
+            const url = new URL(window.location.href);
+            if (typeId && typeId !== 'all') {
+                url.searchParams.set('type_id', typeId);
+            } else {
+                url.searchParams.delete('type_id');
+            }
+            window.location.href = url.toString();
+        }
 </script>
